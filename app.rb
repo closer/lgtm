@@ -61,7 +61,7 @@ module Lgtm
 
     error NotLgtmableImageException do
       status 400
-      'only animated gif supported'
+      'only images supported'
     end
 
     error OverMaxContentLengthException do
@@ -82,7 +82,7 @@ module Lgtm
 
       response = fetch(raw_uri_by_path_info)
 
-      unless /gif/ === response.headers[:content_type]
+      unless /image/ === response.headers[:content_type]
         raise NotLgtmableImageException
       end
 
